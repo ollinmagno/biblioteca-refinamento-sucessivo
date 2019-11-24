@@ -1,11 +1,11 @@
 package br.com.ifal.modelo;
 
 public abstract class Livro {
-	protected String titulo;
-	protected Autor autor;
-	protected String isbn;
-	protected int anoEdicao;
-	protected String editora;
+	private String titulo;
+	private Autor autor;
+	private String isbn;
+	private int anoEdicao;
+	private String editora;
 	
 	public Livro(String titulo, Autor autor, String isbn, int anoEdicao, String editora) {
 		this.titulo = titulo;
