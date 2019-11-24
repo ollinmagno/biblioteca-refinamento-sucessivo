@@ -1,4 +1,4 @@
-package br.com.ifal.entidades;
+package br.com.ifal.modelo;
 
 public abstract class Livro {
 	protected String titulo;

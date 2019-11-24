@@ -1,18 +1,18 @@
-package br.com.ifal.execucao;
+package br.com.ifal.controlador;
 
 import java.util.Scanner;
 
-import br.com.ifal.*;
-import br.com.ifal.entidades.Autor;
-import br.com.ifal.entidades.Ebook;
-import br.com.ifal.entidades.LivroFisico;
-import br.com.ifal.execucao.ControladorMenu;
-import br.com.ifal.repositorio.*;
+import br.com.ifal.controlador.ControladorBibliotecaEbook;
+import br.com.ifal.controlador.ControladorBibliotecaLivro;
+import br.com.ifal.modelo.Autor;
+import br.com.ifal.modelo.Ebook;
+import br.com.ifal.modelo.LivroFisico;
 
 public class ControladorMenu {
 	Scanner leitura = new Scanner(System.in);
-	//ControladorMenu controlador = new ControladorMenu();
-	ControladorBiblioteca controlador = new ControladorBiblioteca();
+
+	ControladorBibliotecaLivro controladorLivro = new ControladorBibliotecaLivro();
+	ControladorBibliotecaEbook controladorEbook = new ControladorBibliotecaEbook();
 	LivroFisico livro;
 	Ebook ebook;
 	Autor autor;
@@ -54,7 +54,7 @@ public class ControladorMenu {
 		System.out.println("Adicione editora: ");
 		String editora = leitura.next();
 
-		System.out.println("Adicionar Livro: op��o 1  |  Adicionar ebook: op��o 2. ");
+		System.out.println("Adicionar Livro: opcao 1  |  Adicionar ebook: opcao 2. ");
 		int escolherOpcao = leitura.nextInt();
 
 		if (escolherOpcao == 1) {
@@ -66,17 +66,17 @@ public class ControladorMenu {
 
 			livro = new LivroFisico(titulo, autor, isbn, anoEdicao, editora, quantidadePaginas, peso);
 			// controlador.cadastrarLivro((LivroFisico) livro);
-			controlador.cadastrarLivro(livro);
+			controladorLivro.cadastrarLivro(livro);
 		} else if (escolherOpcao == 2) {
 			System.out.println("Adicione o formato do ebook: ");
 			String formato = leitura.next();
 
-			System.out.println("Ebook tem marca d'agu� ? true/false");
+			System.out.println("Ebook tem marca d'agua ? true/false");
 			boolean marcaDagua = leitura.nextBoolean();
 
 			ebook = new Ebook(titulo, autor, isbn, anoEdicao, editora, formato, marcaDagua);
 			// controlador.cadastrarLivro((Ebook) ebook);
-			controlador.cadastrarEbook(ebook);
+			controladorEbook.cadastrarEbook(ebook);
 		} else {
 			System.out.println("Ocorreu um erro, tente novamente.");
 		}
@@ -90,11 +90,11 @@ public class ControladorMenu {
 		if (escolhaOpcao == 1) {
 			System.out.println("Adicione um titulo para pesquisar: ");
 			String pesquisarTitulo = leitura.next();
-			controlador.pesquisarLivro(pesquisarTitulo);
+			controladorLivro.pesquisarLivro(pesquisarTitulo);
 		} else if (escolhaOpcao == 2) {
 			System.out.println("Adicione um titulo para pesquisar: ");
 			String pesquisarTituloEbook = leitura.next();
-			controlador.pesquisarEbook(pesquisarTituloEbook);
+			controladorEbook.pesquisarEbook(pesquisarTituloEbook);
 		} else {
 			System.out.println("Ocorreu um erro, tente novamente.");
 		}
@@ -108,13 +108,13 @@ public class ControladorMenu {
 			String tituloLivro = leitura.next();
 			System.out.println("Informe o novo titulo do livro: ");
 			String novoTitulo = leitura.next();
-			controlador.alterarLivro(tituloLivro, novoTitulo);
+			controladorLivro.alterarLivro(tituloLivro, novoTitulo);
 		} else if (alterarLivro == 2) {
 			System.out.println("Informe o nome do titulo a ser alterado: ");
 			String tituloEbook = leitura.next();
 			System.out.println("Informe o novo titulo do ebook: ");
 			String novoTituloEbook = leitura.next();
-			controlador.alterarEbook(tituloEbook, novoTituloEbook);
+			controladorEbook.alterarEbook(tituloEbook, novoTituloEbook);
 		} else {
 			System.out.println("Erro");
 		}
@@ -126,12 +126,12 @@ public class ControladorMenu {
 		if (deletarOpcao == 1) {
 			System.out.println("Informe o titulo do livro a ser deletado: ");
 			String deletarLivro = leitura.next();
-			controlador.deletarLivro(deletarLivro);
+			controladorLivro.deletarLivro(deletarLivro);
 
 		} else if (deletarOpcao == 2) {
 			System.out.println("Informe o titulo do ebook a ser deletado");
 			String deletarEbook = leitura.next();
-			controlador.deletarEbook(deletarEbook);
+			controladorEbook.deletarEbook(deletarEbook);
 
 		} else {
 			System.out.println("Ocorreu um erro, tente novamente.");

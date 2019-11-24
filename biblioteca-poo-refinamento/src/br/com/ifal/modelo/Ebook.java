@@ -1,4 +1,4 @@
-package br.com.ifal.entidades;
+package br.com.ifal.modelo;
 
 public class Ebook extends Livro {
 	
